@@ -1,5 +1,5 @@
 import React from "react";
-import { Hero } from "../components";
+import { FeaturedProducts, Hero } from "../components";
 import { instance } from "../utils";
 
 const url = "/products?features=true";
@@ -11,7 +11,12 @@ export const loader = async () => {
 };
 
 const Landing = () => {
-  return <Hero />;
+  return (
+    <>
+      <Hero />
+      <FeaturedProducts />
+    </>
+  );
 };
 
 export default Landing;
