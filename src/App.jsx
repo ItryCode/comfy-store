@@ -22,6 +22,7 @@ import { ErrorElement } from "./components";
 import viteLogo from "/vite.svg";
 import { loader as landingLoader } from "./pages/Landing";
 import { loader } from "./pages/SingleProduct";
+import { loader as proLoader } from "./pages/Products";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,8 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <Products />,
+        loader: proLoader,
+        errorElement: <Error />,
       },
       {
         path: "/products/:id",
