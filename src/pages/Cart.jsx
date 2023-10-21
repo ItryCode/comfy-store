@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { CartItemList, SectionTitle, CartTotals } from "../components";
+import { CartItemsList, SectionTitle, CartTotals } from "../components";
 import { Link } from "react-router-dom";
 const Cart = () => {
   const user = null;
@@ -13,7 +13,7 @@ const Cart = () => {
       <SectionTitle text="shopping cart" />
       <div className="mt-8 grid gap-8 lg:grid-cols-12">
         <div className="lg:col-span-8">
-          <CartItemList />
+          <CartItemsList />
         </div>
         <div className="lg:col-span-4 lg:pl-4">
           <CartTotals />
