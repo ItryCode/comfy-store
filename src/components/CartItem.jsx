@@ -7,12 +7,12 @@ const CartItem = ({ item }) => {
   console.log(item);
   const { cartID, title, price, image, amount, company, productColor } = item;
   const dispatch = useDispatch();
-  const removeItem = () => {
+  const removeFromCart = () => {
     dispatch(removeItem({ cartID }));
   };
 
-  const handleAmount = () => {
-    dispatch(handleAmount({ cartID, amount }));
+  const handleAmount = (e) => {
+    dispatch(editItem({ cartID, amount: parseInt(e.target.value) }));
   };
 
   return (
@@ -46,15 +46,20 @@ const CartItem = ({ item }) => {
             name="amount"
             id="amount"
             className="mt-2 select select-base select-bordered select-xs"
+            onChange={handleAmount}
+            value={amount}
           >
             {generateAmount(amount + 5)}
           </select>
         </div>
-        <button className="mt-2 link link-primary link-hover text-sm">
+        <button
+          className="mt-2 link link-primary link-hover text-sm"
+          onClick={removeFromCart}
+        >
           Remove
         </button>
       </div>
-      <p className="font-medium sm:ml-auto">{formatPrice(price)}</p>
+      <p className="font-medium sm:ml-auto">{formatPrice(price * amount)}</p>
     </article>
   );
 };

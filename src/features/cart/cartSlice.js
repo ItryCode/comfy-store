@@ -39,14 +39,13 @@ const cartSlice = createSlice({
     },
     removeItem: (state, action) => {
       const { cartID } = action.payload;
-      const product = state.cartItems.find((item) => item.cartID === cartID);
-      state.cartItems = state.cartItems.filter(
-        (item) => item.cartID === cartID
-      );
+      const product = state.cartItems.find((i) => i.cartID === cartID);
+      state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID);
+
       state.numItemsInCart -= product.amount;
       state.cartTotal -= product.price * product.amount;
       cartSlice.caseReducers.calculateTotals(state);
-      toast.error("Item Removed From Cart");
+      toast.error("Item removed from cart");
     },
     editItem: (state, action) => {
       const { cartID, amount } = action.payload;
