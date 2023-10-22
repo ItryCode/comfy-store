@@ -1,32 +1,18 @@
-import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { BsCart3, BsMoonFill, BsSunFill } from "react-icons/bs";
 import { FaB, FaBarsStaggered } from "react-icons/fa6";
 import NavLinks from "./NavLinks";
 import { useSelector } from "react-redux";
-
-const themes = {
-  retro: "retro",
-  luxury: "luxury",
-};
+import { useDispatch } from "react-redux";
+import { toggleTheme } from "../features/user/userSlice";
 
 const Navbar = () => {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") || themes.retro
-  );
+  const dispatch = useDispatch();
   const handleTheme = () => {
-    const { retro, luxury } = themes;
-    const newTheme = theme === retro ? luxury : retro;
-
-    setTheme(newTheme);
+    dispatch(toggleTheme());
   };
-
   const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
   return (
     <nav className="bg-base-200">
       <div className="navbar align-element">
