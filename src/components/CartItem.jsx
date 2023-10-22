@@ -37,7 +37,7 @@ const CartItem = ({ item }) => {
           ></span>
         </p>
       </div>
-      <div className="sm:ml-24 ">
+      <div className="sm:ml-12 ">
         <div className="form-control w-full max-w-xs">
           <label htmlFor="amount" className="label p-0">
             <span className="label-text">Amount</span>
