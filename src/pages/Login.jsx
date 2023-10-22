@@ -1,7 +1,36 @@
 import React from "react";
 import { useNavigation } from "react-router-dom";
 import { FormInput, SubmitBtn } from "../components";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, redirect, useNavigate } from "react-router-dom";
+import { data } from "autoprefixer";
+
+import { instance } from "../utils";
+import { toast } from "react-toastify";
+
+import { useDispatch } from "react-redux";
+import { store } from "../store";
+import { loginUser } from "../features/user/userSlice";
+
+export const action =
+  (store) =>
+  async ({ request }) => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+
+    try {
+      const response = await instance.post("/auth/local", data);
+      console.log(response);
+      store.dispatch(loginUser(response.data));
+      toast.success("logged in successfully");
+      return redirect("/");
+    } catch (error) {
+      const errorMessage =
+        error?.response?.data?.error?.message ||
+        "please double check your credentials";
+      toast.error(errorMessage);
+      return null;
+    }
+  };
 
 const Login = () => {
   return (
