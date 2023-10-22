@@ -13,7 +13,7 @@ const getThemeFromLocalStorage = () => {
 };
 
 const initialState = {
-  user: { username: "coding addict" },
+  user: { username: "itry" },
   theme: getThemeFromLocalStorage(),
 };
 

@@ -24,6 +24,8 @@ import { loader as landingLoader } from "./pages/Landing";
 import { loader } from "./pages/SingleProduct";
 import { loader as proLoader } from "./pages/Products";
 
+import { action as registerAction } from "./pages/Register";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -75,6 +77,7 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
     errorElement: <Error />,
+    action: registerAction,
   },
 ]);
 

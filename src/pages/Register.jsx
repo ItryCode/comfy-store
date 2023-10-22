@@ -1,6 +1,27 @@
 import React from "react";
 import { FormInput, SubmitBtn } from "../components";
 import { Form, Link } from "react-router-dom";
+import { redirect } from "react-router-dom";
+import { toast } from "react-toastify";
+import { instance } from "../utils";
+
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  console.log(data);
+  try {
+    const response = await instance.post("/auth/local/register", data);
+    toast.success("account created successfully");
+    return redirect("/");
+  } catch (error) {
+    const errorMessage =
+      error?.response?.data?.error?.message ||
+      "please recheck your credentials";
+    toast.error(errorMessage);
+    return null;
+  }
+  return null;
+};
 
 const Register = () => {
   return (
