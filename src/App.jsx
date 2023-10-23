@@ -23,6 +23,7 @@ import viteLogo from "/vite.svg";
 import { loader as landingLoader } from "./pages/Landing";
 import { loader } from "./pages/SingleProduct";
 import { loader as proLoader } from "./pages/Products";
+import { loader as checkLoader } from "./pages/Checkout";
 
 import { action as registerAction } from "./pages/Register";
 import { action as loginAction } from "./pages/Login";
@@ -63,6 +64,7 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout />,
+        loader: checkLoader(store),
       },
       {
         path: "/orders",
