@@ -3,6 +3,8 @@ import { Form, redirect } from "react-router-dom";
 import FormInput from "./FormInput";
 import SubmitBtn from "./SubmitBtn";
 import { formatPrice, instance } from "../utils";
+import { toast } from "react-toastify";
+import { clearCart } from "../features/cart/cartSlice";
 
 export const action =
   (store) =>
@@ -40,7 +42,8 @@ export const action =
         error?.response?.data?.error?.message ||
         "There was an error placing your orders";
       toast.error(errorMessage);
-      if (error.response.status === 401 || 403) return redirect("/login");
+      console.log(error);
+      if (error?.response?.status === 401 || 403) return redirect("/login");
       return null;
     }
   };

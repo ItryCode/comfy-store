@@ -17,3 +17,5 @@ export { default as CartItemsList } from "./CartItemsList";
 export { default as CartTotals } from "./CartTotals";
 export { default as Checkbox } from "./Checkbox";
 export { default as CheckoutForm } from "./CheckoutForm";
+export { default as OrdersList } from "./OrdersList";
+export { default as ComplexPagination } from "./ComplexPagination";
