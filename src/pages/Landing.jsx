@@ -4,8 +4,14 @@ import { instance } from "../utils";
 
 const url = "/products?features=true";
 
-export const loader = async () => {
-  const response = await instance(url);
+const featuredProductsQuery = {
+  queryKey: ["featuredProducts"],
+  queryFn: () => instance(url),
+};
+
+export const loader = (queryClient) => async () => {
+  const response = await queryClient.ensureQueryData(featuredProductsQuery);
+  console.log(response);
   const products = response.data.data;
   return { products };
 };

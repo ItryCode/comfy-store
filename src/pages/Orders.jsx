@@ -10,7 +10,7 @@ import {
 } from "../components";
 
 export const loader =
-  (store) =>
+  (store, queryClient) =>
   async ({ request }) => {
     const user = store.getState().userState.user;
     if (!user) {
