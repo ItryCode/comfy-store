@@ -4,10 +4,19 @@ import { formatPrice, generateAmount, instance } from "../utils";
 import { useDispatch } from "react-redux";
 import { addItem } from "../features/cart/cartSlice";
 
+const singleProductQuery = (id) => {
+  return {
+    queryKey: ["singleProduct", id],
+    queryFn: () => instance(`/products/${id}`),
+  };
+};
+
 export const loader =
   (queryClient) =>
   async ({ params }) => {
-    const response = await instance(`products/${params.id}`);
+    const response = await queryClient.ensureQueryData(
+      singleProductQuery(params.id)
+    );
     return { product: response.data.data };
   };
 const SingleProduct = () => {

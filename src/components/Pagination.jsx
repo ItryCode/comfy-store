@@ -19,7 +19,7 @@ const Pagination = () => {
   };
 
   if (pageCount < 2) {
-    return nul;
+    return null;
   }
   return (
     <div className="mt-16 flex justify-end">
