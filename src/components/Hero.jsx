@@ -23,7 +23,7 @@ const Hero = () => {
           </Link>
         </div>
       </div>
-      <div className="h-96 carousel carousel-vertical rounded-box">
+      <div className="h-96  carousel carousel-vertical rounded-box lg:ml-20">
         {carouselImages.map((image, index) => {
           return (
             <div key={image} className="carousel-item h-full">
